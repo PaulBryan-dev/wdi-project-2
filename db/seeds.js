@@ -5,7 +5,8 @@ const mongoose   = require("mongoose");
 mongoose.Promise = Bluebird;
 const config     = require("../config/config");
 const Station    = require("../models/station");
-const url        = "http://www.abandonedstations.org.uk/";
+const url        = "https://en.wikipedia.org/wiki/List_of_former_and_unopened_London_Underground_stations";
+const locations  = [];
 let count        = 0;
 
 mongoose.connect(config.db);
@@ -17,7 +18,6 @@ function getStations(){
   .then((body, response) => {
     const $             = cheerio.load(body);
     const stationScrape = $("tr td a");
-    const locations     = [];
 
     stationScrape.each((i, station) => {
       let location = {
@@ -26,7 +26,9 @@ function getStations(){
       };
 
       if (location.url && location.name && relativeUrl(location.url) && doesntStartWithHash(location.url) && validateUrl(`${url}${location.url}`)) {
-        return locations.push(`${url}${location.url}`);
+        let newUrl = `${url}${location.url}`;
+        // console.log(newUrl);
+        return locations.push(newUrl);
       }
     });
 
@@ -35,14 +37,24 @@ function getStations(){
     });
   })
   .then(data => {
-    return Bluebird.map(data, (body) => {
+    return Bluebird.map(data, (body, i) => {
       const $ = cheerio.load(body);
       const images = $("img");
-      console.log(images);
+
+
+      let stationData = {};
+      if (images) {
+        stationData.url   = locations[i];
+        stationData.image = images[0].attribs("style");
+        return Station.create(stationData);
+      } else {
+        return;
+      }
     });
   })
   .then(data => {
-    console.log("DONE");
+    // console.log("DONE");
+    // console.log(data);
   })
   .catch(console.error);
 }
