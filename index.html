@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Six Feet Underground</title>
-    <link rel="stylesheet"  href="./public/css/style.scss">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu7biisjuc2MCo_hojdoyt-rhphR9ur8k&callback=initMap" type="text/javascript"></script>
-    <script src="./js/client.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <div id="mapCanvas"></div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Six Feet Underground</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu7biisjuc2MCo_hojdoyt-rhphR9ur8k" type="text/javascript"></script>
+  <script src="/js/app.js" charset="utf-8"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#" class="homepage">Home</a></li>
+        <ul class="loggedOut">
+          <li><a href="#" class="login">Login</a></li>
+          <li><a href="#" class="register">Register</a></li>
+        </ul>
+        <ul class="loggedIn">
+          <li><a href="#" class="logout">Logout</a></li>
+        </ul>
+      </ul>
+    </nav>
+  </header>
+  <div class="form-container"></div>
+  <main>
+  </main>
+</body>
 </html>

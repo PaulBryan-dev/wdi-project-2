@@ -1,10 +1,17 @@
-const express = require("express");
-const router  = express.Router();
-const path    = require("path");
+const express  = require("express");
+const router   = express.Router();
 
-const statics = require("../controllers/statics");
+const authentications = require("../controllers/authentications");
+const users           = require("../controllers/users");
 
-router.route("/")
-.get (statics.home);
+router.route("/register")
+  .post(authentications.register);
+router.route("/login")
+  .post(authentications.login);
 
-module.exports = router;
+router.route('/users')
+  .get(users.index);
+router.route('/users/:id')
+  .get(users.show)
+  .put(users.update)
+  .delete(users.delete);

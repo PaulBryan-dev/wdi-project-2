@@ -1,18 +1,8 @@
 const express  = require("express");
 const router   = express.Router();
+const path     = require("path");
 
-const authentications = require("../controllers/authentications");
-
-router.route("/register")
-  .post(authentications.register);
-  router.route("/login")
-  .post(authentications.login);
-
-// router.route('/user')
-// .get(users.index);
-// router.route('/users/:id')
-// .get(users.show)
-// .put(users.update)
-// .delete(users.delete);
+router.route("/")
+  .get((req, res) => res.sendFile(path.join(__dirname, "../index.html")));
 
 module.exports = router;
