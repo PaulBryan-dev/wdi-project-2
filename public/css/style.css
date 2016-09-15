@@ -1,1 +1,1 @@
-#mapCanvas,body,html{margin:0 auto}h1{font-size:4em;color:green}#mapCanvas{width:90%;height:100vh}
+.title,li,ul{font-family:bombing}li,ul{display:inline-block;padding:5px 15px;background-color:#BA8ADF;border-radius:5px;font-size:1.1em}body,html{margin:0 auto;background-color:#FFC597}.navbar{position:relative}.title{color:#FFFC97;background-color:#9A5CCA;text-align:center;font-size:3em;padding:15px;text-shadow:2px 3px 4px #000}#mapCanvas{width:90%;height:85vh;margin:0 auto;border:5px solid #FFFC97;border-radius:10px}#logo{position:absolute;margin-left:3%}

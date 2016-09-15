@@ -39,14 +39,20 @@ rp(url)
         image = `https:${image.attr("src")}`;
       }
 
-      const coords = $("#coordinates span.geo-dec");
+      const coords        = $("#coordinates span.geo-dec");
       if (coords.length === 0) return;
 
-      const coordsString = coords.text();
-      let coordsArray    = coordsString.split(" ");
+      const coordsString  = coords.text();
+      let coordsArray     = coordsString.split(" ");
       if (coordsArray.length < 2) return;
 
-      coordsArray        = coordsArray.map(coord => parseFloat(coord));
+      coordsArray        = coordsArray.map(coord => {
+        if (coord.indexOf("W") !== -1) {
+          return -(parseFloat(coord));
+        } else {
+          return parseFloat(coord);
+        }
+      });
 
       let obj = {
         name:  name,

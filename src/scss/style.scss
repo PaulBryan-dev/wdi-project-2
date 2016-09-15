@@ -1,14 +1,53 @@
+ul, li {
+  display: inline-block;
+  padding: 5px;
+  background-color: #BA8ADF;
+  border-radius: 5px;
+  font-family: "bombing";
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 1.1em;
+}
 body,html {
   margin:0 auto;
+  background-color: #FFC597;
 }
 
-h1 {
-  font-size: 4em;
-  color: green;
+.navbar {
+  position: relative;
 }
 
+.title {
+  font-size: 2em;
+  color: #FFFC97;
+  background-color: #9A5CCA;
+  text-align: center;
+  font-family: "bombing";
+  font-size: 3em;
+  padding: 15px;
+  text-shadow: 2px 3px 4px #000;
+}
 #mapCanvas {
   width: 90%;
-  height: 100vh;
+  height: 85vh;
   margin: 0 auto;
+  border: 5px solid #FFFC97;
+  border-radius: 10px;
 }
+
+#logo {
+  position: absolute;
+  margin-left: 3%;
+}
+
+// 
+// #415fa6
+// #b06111
+// #f386a1
+// #ffd204
+// #98005d
+// #ee2e24
+// #0fa3de
+// #00853e
+// #f4842e
+// #e7e7e8

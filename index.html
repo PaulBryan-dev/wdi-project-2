@@ -4,23 +4,29 @@
   <meta charset="utf-8">
   <title>Six Feet Underground</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu7biisjuc2MCo_hojdoyt-rhphR9ur8k" type="text/javascript"></script>
   <script src="/js/app.js" charset="utf-8"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="#" class="homepage">Home</a></li>
-        <ul class="loggedOut">
-          <li><a href="#" class="login">Login</a></li>
-          <li><a href="#" class="register">Register</a></li>
+    <div class="navbar">
+      <img id="logo" src="src/images/mapimaps.png" alt="" />
+      <nav>
+        <ul>
+          <li><a href="#" class="homepage">Home</a></li>
+          <ul class="loggedOut">
+            <li><a href="#" class="login">Login</a></li>
+            <li><a href="#" class="register">Register</a></li>
+          </ul>
+          <ul class="loggedIn">
+            <li><a href="#" class="logout">Logout</a></li>
+          </ul>
         </ul>
-        <ul class="loggedIn">
-          <li><a href="#" class="logout">Logout</a></li>
-        </ul>
-      </ul>
-    </nav>
+      </nav>
+    </div>
+    <h1 class="title">Six Feet Underground</h1>
   </header>
   <div class="form-container"></div>
   <main>
