@@ -39,6 +39,10 @@ rp(url)
         image = `https:${image.attr("src")}`;
       }
 
+      let description = $("p:first-of-type");
+      if (!description) return;
+      description = description.text();
+
       const coords        = $("#coordinates span.geo-dec");
       if (coords.length === 0) return;
 
@@ -59,6 +63,7 @@ rp(url)
         image: image,
         lat:   coordsArray[0],
         lng:   coordsArray[1],
+        description
       };
 
       console.log("SAVE OBJECT", obj);

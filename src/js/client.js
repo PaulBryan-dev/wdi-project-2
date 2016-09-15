@@ -8,11 +8,11 @@ App.addInfoWindowForStation = function(station, marker) {
     google.maps.event.addListener(marker, 'click', () => {
     if (typeof this.infowindow != "undefined") this.infowindow.close();
     this.infowindow = new google.maps.InfoWindow({
-    content: `<h2>${station.name}</h2><img src="${station.image}"><p>${ station.description }</p>`
+    content: `<div id="infoWindow"><h2 class="windowName">${station.name}</h2><img class="windowPic" src="${station.image}"><p>${station.description}</p></div>`
   });
     this.infowindow.open(this.map, marker);
     this.map.setCenter(marker.getPosition());
-    this.map.panBy(0,-150);
+    this.map.panBy(0,-180);
   });
 };
 
@@ -24,6 +24,7 @@ App.createMarkerForStation = function(station) {
     position: latlng,
     map: this.map,
     icon: "./images/train-marker.png",
+    animation: "drop"
   });
   this.addInfoWindowForStation(station, marker);
 };
@@ -51,9 +52,9 @@ App.mapSetup = function() {
   let mapCanvas = document.getElementById('mapCanvas');
 
   let mapOptions = {
-    zoom: 11,
-    center: new google.maps.LatLng(51.516178,-0.088369),
-    styles: [{"featureType":"all","elementType":"geometry","stylers":[{"color":"#ecdcc3"}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"gamma":0.01},{"lightness":20}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"saturation":-31},{"lightness":-33},{"weight":2},{"gamma":0.8}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative.country","elementType":"all","stylers":[{"visibility":"simplified"},{"color":"#776340"},{"invert_lightness":true}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"simplified"},{"color":"#776340"}]},{"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"visibility":"on"}]},{"featureType":"administrative.province","elementType":"geometry.stroke","stylers":[{"visibility":"on"}]},{"featureType":"administrative.neighborhood","elementType":"geometry.fill","stylers":[{"visibility":"on"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"lightness":30},{"saturation":30}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"visibility":"on"}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape.natural","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"landscape.natural.terrain","elementType":"all","stylers":[{"visibility":"on"},{"color":"#e5d8c3"},{"lightness":"-6"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"saturation":20}]},{"featureType":"poi.park","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"lightness":20},{"saturation":-20}]},{"featureType":"road","elementType":"all","stylers":[{"weight":"1"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":10},{"saturation":-30}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#8f8470"},{"lightness":"0"},{"weight":"1"},{"invert_lightness":true}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"saturation":25},{"lightness":25},{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"weight":"2.00"},{"invert_lightness":true}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"weight":"2"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit.line","elementType":"all","stylers":[{"visibility":"on"},{"invert_lightness":true},{"lightness":"37"}]},{"featureType":"transit.station.airport","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.rail","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#b0b0b0"}]},{"featureType":"transit.station.rail","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.rail","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"lightness":-20},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"lightness":"28"}]},{"featureType":"water","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels.icon","stylers":[{"visibility":"off"}]}]
+    zoom: 10,
+    center: new google.maps.LatLng(51.516178,-0.018369),
+    styles: [{"elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#113b92"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#0fa3de"}]},{"elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#00853e"}]},{"featureType":"poi.attraction","elementType":"geometry.fill","stylers":[{"color":"#ee2e24"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#e7e7e8"}]},{"featureType":"poi.business","elementType":"geometry.fill","stylers":[{"color":"#FFED00"}]},{"featureType":"poi.government","elementType":"geometry.fill","stylers":[{"color":"#b06111"}]},{"featureType":"poi.school","elementType":"geometry.fill","stylers":[{"color":"#f386a1"}]},{"featureType":"transit.line","elementType":"geometry.fill","stylers":[{"saturation":-100}]}]
   };
 
   this.map = new google.maps.Map(mapCanvas, mapOptions);
@@ -66,8 +67,12 @@ App.mapSetup = function() {
 
 App.homepage = function() {
   this.$main.html(`
-      <h1>Website Title</h1>
-      <h3>Caption</h3>
+    <div class="welcomeBox">
+      <h2>Where Tube Stations find their peace</h2>
+      <h4>Please login or register to access the map</h4>
+
+    </div>
+
     `);
 };
 
@@ -136,7 +141,6 @@ App.logout = function() {
 App.register = function() {
   if (event) event.preventDefault();
   this.$form.html(`
-
 <h2>Register</h2>
   <form method="post" action="/register">
       <div class="form-group">
@@ -184,6 +188,7 @@ App.register = function() {
       $(".login").on("click", this.login.bind(this));
       $(".logout").on("click", this.logout.bind(this));
       this.$form.on("submit", "form", this.handleForm);
+
 
       if (this.getToken()) {
         this.loggedInState();

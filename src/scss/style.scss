@@ -1,38 +1,84 @@
-ul, li {
-  display: inline-block;
-  padding: 5px;
-  background-color: #BA8ADF;
-  border-radius: 5px;
-  font-family: "bombing";
-  padding-right: 15px;
-  padding-left: 15px;
-  font-size: 1.1em;
+// ul, li {
+//   display: inline-block;
+//   padding: 5px;
+//   border-radius: 5px;
+//   padding-right: 15px;
+//   padding-left: 15px;
+//   font-size: 1.1em;
 }
-body,html {
+body {
   margin:0 auto;
-  background-color: #FFC597;
+  background-color: #e7e7e8;
+  font-family: "London-Tube";
 }
 
+footer {
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+.wrapper {
+	min-height: 100%;
+	margin: 0 auto -155px;
+}
+.footer, .push {
+	height: 155px;
+}
 .navbar {
   position: relative;
+  font-family: "London-Tube";
+  background-color:  #00afad;
+
 }
 
 .title {
-  font-size: 2em;
-  color: #FFFC97;
-  background-color: #9A5CCA;
+  font-size: .8em;
   text-align: center;
-  font-family: "bombing";
   font-size: 3em;
-  padding: 15px;
-  text-shadow: 2px 3px 4px #000;
-}
-#mapCanvas {
-  width: 90%;
-  height: 85vh;
+  padding: 5px;
+  font-family: "London-Tube";
+  max-width: 360px;
   margin: 0 auto;
-  border: 5px solid #FFFC97;
+  background-color: #113b92;
+  color: #faf5e1;
+}
+
+.welcomeBox {
+  text-align: center;
+  font-family: "London-Tube"
+}
+
+.windowName {
+  font-family: "London-Tube";
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #00afad;
+  padding: 10px;
+  width: 300px;
   border-radius: 10px;
+  margin-left: 20px;
+}
+
+.windowPic {
+  width: 300px;
+  border-radius: 10px;
+  margin-left: 20px;
+
+}
+
+.infowindow {
+  border-radius: 10px;
+}
+
+#mapCanvas {
+  width: 95%;
+  height: 90vh;
+  margin: 0 auto;
+  border: 8px dashed #f4842e;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 50px;
 }
 
 #logo {
@@ -40,7 +86,7 @@ body,html {
   margin-left: 3%;
 }
 
-// 
+//
 // #415fa6
 // #b06111
 // #f386a1
@@ -51,3 +97,6 @@ body,html {
 // #00853e
 // #f4842e
 // #e7e7e8
+// #113b92
+// #faf5e1
+// #00afad
